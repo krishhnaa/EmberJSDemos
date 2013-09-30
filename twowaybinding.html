@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>EmberJS Demos - Two Way Binding</title>
+	  <link rel="stylesheet" href="css/normalize.css">
+  <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+  <script src="http://code.jquery.com/jquery.js"></script>
+<script src="js/libs/handlebars-1.0.0.js"></script>
+  <script src="js/libs/ember-1.0.0.js"></script>
+  <script type="text/javascript" src="js/app.js"></script>
+<meta charset=utf-8 />
+</head>
+<body>
+  
+  <script type="text/x-handlebars">
+    <div class="container">
+      <div class="row-fluid">
+        <ul class="nav nav-list span3 well">
+          {{#each model}}
+          <li>{{#linkTo "user" this}}{{first}}{{/linkTo}}</li>
+          {{/each}}
+        </ul>
+        <div class="span9 well">{{outlet}}</div>
+      </div>
+    </div>
+  </script>
+
+  <script type="text/x-handlebars" id="user">
+    <h2>
+      {{first}} {{last}}
+      <img {{bindAttr src="avatar"}} class="pull-right" width=50 />
+    </h2>
+    <dl>
+      <dt>First</dt>
+      <dd>{{first}}</dd>
+      <dt>Last</dt>
+      <dd>{{last}}</dd>
+    </dl>
+    {{#linkTo "editUser" this class="btn btn-primary"}}Edit{{/linkTo}}
+  </script>
+
+  <script type="text/x-handlebars" id="editUser">
+    <h2>Edit User</h2>
+    <form class="form-inline" {{action saveuser on="submit"}}>
+      <label>
+        First:
+        {{input type="text" value=first}}      
+      </label><br>
+    
+      <label>
+        Last:
+        {{input type="text" value=last}}        
+      </label>
+    
+      <div class="controls">
+        <button type="submit" class="btn btn-primary">Done</button>
+      </div>
+    </form>
+  </script>
+  
+</body>
+</html>
