@@ -1,11 +1,20 @@
 App = Ember.Application.create();
 
-App.ApplicationRoute = Ember.Route.extend({
-     model:  function(){
-    return users;
+App.Router.map(function() {
+  this.resource('user', {path: '/users/:user_id'});
+});
+
+App.UserRoute = Ember.Route.extend({
+  model: function(params) {
+    return users[params.user_id];
   }
 });
 
+App.ApplicationRoute = Ember.Route.extend({
+  model: function() {
+    return users;
+  }
+});
 
 var users = [
   {
