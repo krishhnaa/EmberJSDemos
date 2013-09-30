@@ -8,3 +8,5 @@ EmberJS demo is the project of series of applications usins Emberjs
 2)Displaying the date with links and navigate the user with the links
 
 3) Explaing Twoway binding by editing the user and saving..
+
+4) Added the functionality to add new user to the list.
